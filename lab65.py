@@ -32,6 +32,7 @@ def get_words(f: str, letters: List[str]) -> List[str]:
                     bool1=False
             if bool1:
                 res.append(line.lower())
+    return res
             
 
 
@@ -41,7 +42,12 @@ def get_user_words() -> List[str]:
     Gets words from user input and returns a list with these words.
     Usage: enter a word or press ctrl+d to finish.
     """
-    pass
+    try:
+        res=[]
+        while True:
+            res.append(input())
+    except EOFError:
+        return res
 
 
 def get_pure_user_words(user_words: List[str], letters: List[str], words_from_dict: List[str]) -> List[str]:
@@ -51,7 +57,23 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     Checks user words with the rules and returns list of those words
     that are not in dictionary.
     """
-    pass
+    res=[]
+    for i in user_words:
+        lst1=letters
+        bool1=True
+        if letters[4] not in i:
+            bool1=False
+        for j in i:
+            if j in lst1:
+                lst1.remove(j)
+            else:
+                bool1=False
+        if bool1:
+            res.append(i)
+    for i in res:
+        if i in words_from_dict:
+            res.remove(i)
+    return res
 
 
 def results():
