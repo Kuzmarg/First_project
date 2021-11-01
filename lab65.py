@@ -66,7 +66,7 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                 lst1.remove(j)
             else:
                 bool1=False
-        if bool1:
+        if bool1 and len(i)>=4:
             res.append(i)
     del_ls=[]
     for j in res:
@@ -94,6 +94,3 @@ def results():
         if i not in got_words:
             print(i)
     print(get_pure_user_words(got_words,grid1,get_words('en',grid1)))
-
-print(get_words('en.txt', [el for el in 'gniarnoah']))
-print(get_pure_user_words(get_user_words(), [el for el in 'gniarnoah'], get_words('en.txt', [el for el in 'gniarnoah'])))
