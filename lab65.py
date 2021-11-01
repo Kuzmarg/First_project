@@ -17,7 +17,22 @@ def get_words(f: str, letters: List[str]) -> List[str]:
     """
     Reads the file f. Checks the words with rules and returns a list of words.
     """
-    pass
+    res=[]
+    with open(f, 'r') as file:
+        for line in file:
+            lst1=letters
+            line=line.strip()
+            bool1=True
+            if lst1[4] not in line.lower():
+                bool1=False
+            for i in line:
+                if i.lower() in lst1:
+                    lst1.remove(i.lower())
+                else:
+                    bool1=False
+            if bool1:
+                res.append(line.lower())
+            
 
 
 
