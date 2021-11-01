@@ -94,3 +94,6 @@ def results():
         if i not in got_words:
             print(i)
     print(get_pure_user_words(got_words,grid1,get_words('en',grid1)))
+
+print(get_words('en.txt', [el for el in 'gniarnoah']))
+print(get_pure_user_words(get_user_words(), [el for el in 'gniarnoah'], get_words('en.txt', [el for el in 'gniarnoah'])))
