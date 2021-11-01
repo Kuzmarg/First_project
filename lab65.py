@@ -12,15 +12,17 @@ def generate_grid() -> List[List[str]]:
     """
     return [[random.choice(string.ascii_uppercase) for i in range(3)]for j in range(3)]
 
-
-def get_words(f: str, letters: List[str]) -> List[str]:
+def get_words(file1: str, letters: List[str]) -> List[str]:
     """
-    Reads the file f. Checks the words with rules and returns a list of words.
+    Reads the file file1. Checks the words with rules and returns a list of words.
     """
     res=[]
-    with open(f, 'r') as file:
+    with open('en.txt', 'r', encoding='utf-8') as file:
+        file.readline()
+        file.readline()
+        file.readline()
         for line in file:
-            lst1=letters
+            lst1=letters+[]
             line=line.strip()
             bool1=True
             if lst1[4] not in line.lower():
@@ -30,12 +32,9 @@ def get_words(f: str, letters: List[str]) -> List[str]:
                     lst1.remove(i.lower())
                 else:
                     bool1=False
-            if bool1:
+            if bool1 and len(line)>=4:
                 res.append(line.lower())
     return res
-            
-
-
 
 def get_user_words() -> List[str]:
     """
@@ -49,8 +48,7 @@ def get_user_words() -> List[str]:
     except EOFError:
         return res
 
-
-def get_pure_user_words(user_words: List[str], letters: List[str], words_from_dict: List[str]) -> List[str]:
+def get_pure_user_words(user_words: List[str], letters: List[str], words_from_dict: List[str]):
     """
     (list, list, list) -> list
 
@@ -75,6 +73,9 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
             res.remove(i)
     return res
 
-
 def results():
+    """
+    Returns result
+    """
     pass
+print(get_words('en', [el for el in 'wumrovkif']))
