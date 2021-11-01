@@ -17,7 +17,7 @@ def get_words(file1: str, letters: List[str]) -> List[str]:
     Reads the file file1. Checks the words with rules and returns a list of words.
     """
     res=[]
-    with open('en.txt', 'r', encoding='utf-8') as file:
+    with open(file1, 'r', encoding='utf-8') as file:
         file.readline()
         file.readline()
         file.readline()
@@ -57,7 +57,7 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     """
     res=[]
     for i in user_words:
-        lst1=letters
+        lst1=letters+[]
         bool1=True
         if letters[4] not in i:
             bool1=False
@@ -68,14 +68,29 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                 bool1=False
         if bool1:
             res.append(i)
-    for i in res:
-        if i in words_from_dict:
-            res.remove(i)
+    del_ls=[]
+    for j in res:
+        if j in words_from_dict:
+            del_ls.append(j)
+    for j in del_ls:
+        res.remove(j)
     return res
 
 def results():
     """
     Returns result
     """
-    pass
-print(get_words('en', [el for el in 'wumrovkif']))
+    grid1=generate_grid()
+    print(grid1)
+    grid1=grid1[0]+grid1[1]+grid1[2]
+    grid1=[i.lower() for i in grid1]
+    got_words=get_user_words()
+    num=0
+    for i in got_words:
+        if i in get_words('en',grid1):
+            num+=1
+    print(num)
+    for i in get_words('en',grid1):
+        if i not in got_words:
+            print(i)
+    print(get_pure_user_words(got_words,grid1,get_words('en',grid1)))
