@@ -37,7 +37,7 @@ def get_words(file1,letters):
                     typo='verb'
                 else:
                     typo='noun'
-            res.append((line1[0],typo))
+                res.append((line1[0],typo))
     return res
 
 def get_user_words():
@@ -74,8 +74,9 @@ def game():
     grid1=generate_grid()
     dict_words=get_words('base.lst',grid1)
     print(grid1)
-    print('Input words:')
     part_lang=random.choice(['noun','adverb','verb','adjective'])
+    print(part_lang)
+    print('Input words:')
     res=check_user_words(get_user_words(),part_lang,grid1,dict_words)
     print(res[1])
     print(res[2])
