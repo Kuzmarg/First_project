@@ -105,7 +105,6 @@ def game():
 if __name__=='__main__':
     # # print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],
     # # get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х'])))
-    a=
-    print(get_words("base.lst", ['щ']))
+    # print(get_words("base.lst", ['щ']))
     import doctest
     doctest.testmod()
