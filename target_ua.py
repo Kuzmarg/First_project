@@ -65,7 +65,7 @@ def check_user_words(user_words,language_part,letters,dict_of_words):
             correct_words.append(i[0])
             user_words.remove(i[0])
     for j in dict_of_words:
-        if j[0] not in correct_words:
+        if j[0] not in correct_words and j[1]==language_part:
             forg_words.append(j[0])
     return correct_words,forg_words
 
@@ -83,4 +83,5 @@ def game():
     print("Words that ypu didn't mention:")
     print(res[1])
 
-game()
+# game()
+print(get_words('base.lst',['ш']))
