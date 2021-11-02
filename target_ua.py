@@ -22,15 +22,19 @@ def get_words(file1,letters):
     str,list -> list
     Generates a list of tuples containing words and the part of speech
     >>> get_words('base.lst',['щ'])
-    [('щасні', 'adjective'), ('щастя', 'noun'), ('щебет', 'noun'), ('\
-щем', 'noun'), ('щеня', 'noun'), ('щепа', 'noun'), ('щерба', 'noun'), (\
-'щигля', 'noun'), ('щипак', 'noun'), ('щипок', 'noun'), ('щипці', 'noun'\
-), ('щир', 'noun'), ('щирий', 'adjective'), ('щит', 'noun'), ('щиток', 'nou\
-n'), ('щі', 'noun'), ('щіпка', 'noun'), ('щітка', 'noun'), ('щіть', 'noun')\
-, ('щічка', 'noun'), ('щогла', 'noun'), ('щока', 'noun'), ('щука', 'noun'), (\
-'щуп', 'noun'), ('щупак', 'noun'), ('щупик', 'noun'), ('щупля', 'noun'), ('щ\
-ур', 'noun'), ('щурик', 'noun'), ('щурка', 'noun'), ('щуря', 'noun'), ('щучи\
-й', 'adjective'), ('щучин', 'adjective'), ('щучка', 'noun')]
+    [('щасні', 'adjective'), ('щасно', 'adverb'), ('щастя', 'nou\
+n'), ('ще', 'adverb'), ('щебет', 'noun'), ('щем', 'noun'), ('щем\
+но', 'adverb'), ('щеня', 'noun'), ('щепа', 'noun'), ('щерба', 'n\
+oun'), ('щигля', 'noun'), ('щипак', 'noun'), ('щипок', 'noun'), (\
+'щипці', 'noun'), ('щир', 'noun'), ('щирий', 'adjective'), ('щит'\
+, 'noun'), ('щиток', 'noun'), ('щі', 'noun'), ('щіпка', 'noun'), (\
+'щітка', 'noun'), ('щіть', 'noun'), ('щічка', 'noun'), ('щогла', '\
+noun'), ('щодва', 'adverb'), ('щодві', 'adverb'), ('щодня', 'adve\
+rb'), ('щока', 'noun'), ('щоніч', 'adverb'), ('щораз', 'adverb'), ('\
+щорік', 'adverb'), ('щотри', 'adverb'), ('щука', 'noun'), ('щуп', '\
+noun'), ('щупак', 'noun'), ('щупик', 'noun'), ('щупля', 'noun'), ('\
+щур', 'noun'), ('щурик', 'noun'), ('щурка', 'noun'), ('щуря', 'nou\
+n'), ('щучий', 'adjective'), ('щучин', 'adjective'), ('щучка', 'noun')]
     """
     res=[]
     with open(file1, 'r', encoding='utf-8') as file:
@@ -45,10 +49,12 @@ n'), ('щі', 'noun'), ('щіпка', 'noun'), ('щітка', 'noun'), ('щіт�
                     typo='noun'
                 elif 'verb' in line or '/v' in line:
                     typo='verb'
+                elif 'adv' in line:
+                    typo='adverb'
                 else:
                     typo=''
-                # if line1[0]=='щасні':
-                #     print(line)
+                # if line1[0]=='тихо':
+                #     print('typo:',typo)
                 if typo!='':
                     res.append((line1[0],typo))
     return res
@@ -97,6 +103,8 @@ def game():
     print(res[1])
 
 if __name__=='__main__':
-    # print(get_words('base.lst',['щ']))
+    # # print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],
+    # # get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х'])))
+    # print(get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х']))
     import doctest
     doctest.testmod()
