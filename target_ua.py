@@ -15,3 +15,7 @@ def generate_grid():
         if random_word not in res:
             res.append(random_letter)
             i+=1
+    return res
+
+def get_words(file1,letters):
+    
