@@ -80,7 +80,7 @@ def game():
     res=check_user_words(get_user_words(),part_lang,grid1,dict_words)
     print('Correct words:')
     print(res[0])
-    print("Words that ypu didn't mention:")
+    print("Words that you didn't mention:")
     print(res[1])
 
 # game()
