@@ -29,7 +29,7 @@ def get_words(file1,letters):
             if line1[0][0] in letters and len(line1[0])<=5:
                 if 'noun' in line or '/n' in line:
                     typo='noun'
-                elif 'adv' in line or '/adv' in line:
+                elif 'adverb' in line or '/adv' in line:
                     typo='adverb'
                 elif 'adj' in line or '/adj' in line:
                     typo='adjective'
@@ -83,5 +83,5 @@ def game():
     print("Words that you didn't mention:")
     print(res[1])
 
-# game()
-print(get_words('base.lst',['ш']))
+game()
+# print(get_words('base.lst',['ш']))
