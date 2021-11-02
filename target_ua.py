@@ -12,7 +12,7 @@ def generate_grid():
     i=0
     while i<5:
         random_letter=random.choice(start_list)
-        if random_letter not in res:
+        if random_letter not in res and random_letter not in ['ь','и']:
             res.append(random_letter)
             i+=1
     return res
