@@ -58,4 +58,24 @@ def check_user_words(user_words,language_part,letters,dict_of_words):
     Returns two lists - one contains correct input words, the other - all
     the words which were not got from user, but are in the dictionary.
     """
-    
+    correct_words=[]
+    forg_words=[]
+    for i in dict_of_words:
+        if i[0] in user_words and i[1]==language_part:
+            correct_words.append(i[0])
+            user_words.remove(i[0])
+    for j in dict_of_words:
+        if j[0] not in correct_words:
+            forg_words.append(j[0])
+    return correct_words,forg_words
+
+def game():
+    """Contains the game"""
+    grid1=generate_grid()
+    dict_words=get_words('base.lst',grid1)
+    print(grid1)
+    print('Input words:')
+    part_lang=random.choice(['noun','adverb','verb','adjective'])
+    res=check_user_words(get_user_words(),part_lang,grid1,dict_words)
+    print(res[1])
+    print(res[2])
