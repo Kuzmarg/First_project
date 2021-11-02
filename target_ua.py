@@ -21,23 +21,36 @@ def get_words(file1,letters):
     """
     str,list -> list
     Generates a list of tuples containing words and the part of speech
+    >>> get_words('base.lst',['щ'])
+    [('щасні', 'adjective'), ('щастя', 'noun'), ('щебет', 'noun'), ('\
+щем', 'noun'), ('щеня', 'noun'), ('щепа', 'noun'), ('щерба', 'noun'), (\
+'щигля', 'noun'), ('щипак', 'noun'), ('щипок', 'noun'), ('щипці', 'noun'\
+), ('щир', 'noun'), ('щирий', 'adjective'), ('щит', 'noun'), ('щиток', 'nou\
+n'), ('щі', 'noun'), ('щіпка', 'noun'), ('щітка', 'noun'), ('щіть', 'noun')\
+, ('щічка', 'noun'), ('щогла', 'noun'), ('щока', 'noun'), ('щука', 'noun'), (\
+'щуп', 'noun'), ('щупак', 'noun'), ('щупик', 'noun'), ('щупля', 'noun'), ('щ\
+ур', 'noun'), ('щурик', 'noun'), ('щурка', 'noun'), ('щуря', 'noun'), ('щучи\
+й', 'adjective'), ('щучин', 'adjective'), ('щучка', 'noun')]
     """
     res=[]
     with open(file1, 'r', encoding='utf-8') as file:
         for line in file:
             line1=line.split()
             if line1[0][0] in letters and len(line1[0])<=5:
-                if 'noun' in line or '/n' in line:
-                    typo='noun'
+                if 'adj' in line or '/adj' in line:
+                    typo='adjective'
                 elif 'adverb' in line or '/adv' in line:
                     typo='adverb'
-                elif 'adj' in line or '/adj' in line:
-                    typo='adjective'
+                elif 'noun' in line or '/n' in line:
+                    typo='noun'
                 elif 'verb' in line or '/v' in line:
                     typo='verb'
                 else:
-                    typo='noun'
-                res.append((line1[0],typo))
+                    typo=''
+                # if line1[0]=='щасні':
+                #     print(line)
+                if typo!='':
+                    res.append((line1[0],typo))
     return res
 
 def get_user_words():
@@ -83,5 +96,7 @@ def game():
     print("Words that you didn't mention:")
     print(res[1])
 
-game()
-# print(get_words('base.lst',['ш']))
+if __name__=='__main__':
+    # print(get_words('base.lst',['щ']))
+    import doctest
+    doctest.testmod()
