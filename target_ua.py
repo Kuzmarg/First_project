@@ -22,7 +22,7 @@ def get_words(file1,letters):
     str,list -> list
     Generates a list of tuples containing words and the part of speech
     >>> get_words('base.lst',['щ'])
-    [('щасні', 'adjective'), ('щасно', 'adverb'), ('щастя', 'nou\
+    [('щасні', 'noun'), ('щасно', 'adverb'), ('щастя', 'nou\
 n'), ('ще', 'adverb'), ('щебет', 'noun'), ('щем', 'noun'), ('щем\
 но', 'adverb'), ('щеня', 'noun'), ('щепа', 'noun'), ('щерба', 'n\
 oun'), ('щигля', 'noun'), ('щипак', 'noun'), ('щипок', 'noun'), (\
@@ -41,7 +41,7 @@ n'), ('щучий', 'adjective'), ('щучин', 'adjective'), ('щучка', 'n
         for line in file:
             line1=line.split()
             if line1[0][0] in letters and len(line1[0])<=5:
-                if 'adj' in line or '/adj' in line:
+                if ('adj' in line or '/adj' in line) and '/n' not in line:
                     typo='adjective'
                 elif 'adverb' in line or '/adv' in line:
                     typo='adverb'
@@ -53,8 +53,8 @@ n'), ('щучий', 'adjective'), ('щучин', 'adjective'), ('щучка', 'n
                     typo='adverb'
                 else:
                     typo=''
-                if line1[0]=='щасні':
-                    print('typo:',typo)
+                # if line1[0]=='щасні':
+                #     print(line)
                 if typo!='':
                     res.append((line1[0],typo))
     return res
@@ -105,6 +105,7 @@ def game():
 if __name__=='__main__':
     # # print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],
     # # get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х'])))
+    a=
     print(get_words("base.lst", ['щ']))
     import doctest
     doctest.testmod()
