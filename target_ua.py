@@ -7,12 +7,12 @@ def generate_grid():
     -> list
     Generates letters list
     """
-    start_list='абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
+    start_list=[el for el in 'абвгдежзийклмнопрстуфхцчшщьюяєіїґ']
     res=[]
     i=0
     while i<5:
         random_letter=random.choice(start_list)
-        if random_letter not in res and random_letter not in ['ь','и']:
+        if random_letter not in res:
             res.append(random_letter)
             i+=1
     return res
@@ -103,8 +103,5 @@ def game():
     print(res[1])
 
 if __name__=='__main__':
-    # # print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],
-    # # get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х'])))
-    # print(get_words("base.lst", ['щ']))
     import doctest
     doctest.testmod()
