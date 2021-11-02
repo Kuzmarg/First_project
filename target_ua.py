@@ -78,7 +78,7 @@ def game():
     print(part_lang)
     print('Input words:')
     res=check_user_words(get_user_words(),part_lang,grid1,dict_words)
+    print(res[0])
     print(res[1])
-    print(res[2])
 
 game()
