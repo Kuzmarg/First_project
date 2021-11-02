@@ -37,4 +37,25 @@ def get_words(file1,letters):
                     typo='verb'
                 else:
                     typo='noun'
-            res.append((line1[0],typo)) 
+            res.append((line1[0],typo))
+    return res
+
+def get_user_words():
+    """
+    -> list
+    Gets words input by user. Ctrl+d to finish
+    """
+    try:
+        res=[]
+        while True:
+            res.append(input())
+    except EOFError:
+        return res
+
+def check_user_words(user_words,language_part,letters,dict_of_words):
+    """
+    list,str,list,list -> tuple
+    Returns two lists - one contains correct input words, the other - all
+    the words which were not got from user, but are in the dictionary.
+    """
+    
