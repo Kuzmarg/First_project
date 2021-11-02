@@ -10,9 +10,9 @@ def generate_grid():
     start_list='абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
     res=[]
     i=0
-    while i<5::
+    while i<5:
         random_letter=random.choice(start_list)
-        if random_word not in res:
+        if random_letter not in res:
             res.append(random_letter)
             i+=1
     return res
@@ -23,7 +23,7 @@ def get_words(file1,letters):
     Generates a list of tuples containing words and the part of speech
     """
     res=[]
-    with open(file1, 'r', decoding='utf-8') as file:
+    with open(file1, 'r', encoding='utf-8') as file:
         for line in file:
             line1=line.split()
             if line1[0][0] in letters and len(line1[0])<=5:
@@ -61,7 +61,7 @@ def check_user_words(user_words,language_part,letters,dict_of_words):
     correct_words=[]
     forg_words=[]
     for i in dict_of_words:
-        if i[0] in user_words and i[1]==language_part:
+        if i[0] in user_words and i[1]==language_part and i[0][0] in letters:
             correct_words.append(i[0])
             user_words.remove(i[0])
     for j in dict_of_words:
@@ -79,3 +79,5 @@ def game():
     res=check_user_words(get_user_words(),part_lang,grid1,dict_words)
     print(res[1])
     print(res[2])
+
+game()
