@@ -53,8 +53,8 @@ n'), ('щучий', 'adjective'), ('щучин', 'adjective'), ('щучка', 'n
                     typo='adverb'
                 else:
                     typo=''
-                # if line1[0]=='тихо':
-                #     print('typo:',typo)
+                if line1[0]=='щасні':
+                    print('typo:',typo)
                 if typo!='':
                     res.append((line1[0],typo))
     return res
@@ -105,6 +105,6 @@ def game():
 if __name__=='__main__':
     # # print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],
     # # get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х'])))
-    # print(get_words("base.lst", ['ш', 'ь', 'т', 'і', 'х']))
+    print(get_words("base.lst", ['щ']))
     import doctest
     doctest.testmod()
