@@ -18,4 +18,23 @@ def generate_grid():
     return res
 
 def get_words(file1,letters):
-    
+    """
+    str,list -> list
+    Generates a list of tuples containing words and the part of speech
+    """
+    res=[]
+    with open(file1, 'r', decoding='utf-8') as file:
+        for line in file:
+            line1=line.split()
+            if line1[0][0] in letters and len(line1[0])<=5:
+                if 'noun' in line or '/n' in line:
+                    typo='noun'
+                elif 'adv' in line or '/adv' in line:
+                    typo='adverb'
+                elif 'adj' in line or '/adj' in line:
+                    typo='adjective'
+                elif 'verb' in line or '/v' in line:
+                    typo='verb'
+                else:
+                    typo='noun'
+            res.append((line1[0],typo)) 
